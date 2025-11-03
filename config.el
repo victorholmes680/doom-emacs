@@ -25,7 +25,7 @@
   ;; Lombok 支持（确保路径存在）
   (let ((lombok-jar
          (expand-file-name
-          "/Users/wangzhixiong/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar")))
+          "/Users/wangzhixiong/.config/doom/lombok-1.18.24.jar")))
     (when (file-exists-p lombok-jar)
       ;; 在 jdtls 启动参数中加入 lombok agent
       (setq lsp-java-vmargs
