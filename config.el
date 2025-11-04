@@ -90,3 +90,6 @@
   (setq lsp-clients-clangd-args '("--background-index" "--log=error"))
 )
 
+;; 终端下开启鼠标支持
+(unless (display-graphic-p)
+  (xterm-mouse-mode 1))
