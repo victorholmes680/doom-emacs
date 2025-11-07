@@ -85,11 +85,31 @@
 (setq scroll-margin 3)
 (setq scroll-step 1)
 
-
 (after! lsp-mode
-  (setq lsp-clients-clangd-args '("--background-index" "--log=error"))
-)
+  (setq lsp-clients-clangd-args
+        '("--background-index"
+          "--clang-tidy"
+          "--header-insertion=never"
+          "--completion-style=detailed"
+          "--compile-commands-dir=build"
+          "--query-driver=/usr/bin/g++"))
+  (setq lsp-enable-symbol-highlighting t
+        lsp-enable-snippet t
+        lsp-auto-guess-root t
+        lsp-idle-delay 0.1
+        lsp-completion-provider :capf))
 
 ;; 终端下开启鼠标支持
 (unless (display-graphic-p)
   (xterm-mouse-mode 1))
+
+  ;; ------------------------------
+;; Tree-sitter grammar sources
+;; ------------------------------
+(setq treesit-language-source-alist
+      '((c     . ("https://github.com/tree-sitter/tree-sitter-c"))
+        (cpp   . ("https://github.com/tree-sitter/tree-sitter-cpp"))
+        (java  . ("https://github.com/tree-sitter/tree-sitter-java"))
+        (json  . ("https://github.com/tree-sitter/tree-sitter-json"))
+        (python . ("https://github.com/tree-sitter/tree-sitter-python"))))
+
