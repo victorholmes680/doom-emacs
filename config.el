@@ -101,7 +101,15 @@
 
 ;; 终端下开启鼠标支持
 (unless (display-graphic-p)
-  (xterm-mouse-mode 1))
+  (xterm-mouse-mode 1)
+  ;; 启用鼠标滚轮支持
+  (mouse-wheel-mode 1)
+  ;; 绑定滚轮事件到终端模式
+  (global-set-key (kbd "<mouse-4>") #'scroll-down-line)
+  (global-set-key (kbd "<mouse-5>") #'scroll-up-line)
+  ;; 或者使用更通用的滚轮绑定
+  (when (fboundp 'mwheel-install)
+    (mwheel-install)))
 
   ;; ------------------------------
 ;; Tree-sitter grammar sources
